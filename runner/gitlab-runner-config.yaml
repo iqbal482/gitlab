@@ -1,0 +1,19 @@
+# gitlab-runner-config.yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gitlab-runner-config
+  namespace: gitlab
+data:
+  config.toml: |-
+    [[runners]]
+      name = "Kubernetes Demo Runner"
+      url = "http://10.5.5.83:30203/"
+      token = "J4xarfFnEnEcGMuGb29o"
+      executor = "kubernetes"
+      [runners.kubernetes]
+        namespace = "gitlab-runner"
+        poll_timeout = 600
+        cpu_request = "1"
+        service_cpu_request = "200m"
